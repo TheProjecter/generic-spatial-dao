@@ -30,6 +30,7 @@ import org.hibernate.criterion.Projections;
  */
 public class GenericSpatialDao<T> implements Dao<T> {
 
+	private static final String UNCHECKED = "unchecked";
 	private static final String FAILED_TO_REMOVE_ALL = "Failed to remove all: ";
 	private static final String CAUSE = ". Cause: ";
 	private static final String PERSISTING_OBJECT = "Persisting object: ";
@@ -108,7 +109,7 @@ public class GenericSpatialDao<T> implements Dao<T> {
 		return findAll(null);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	@Override
 	public List<T> findAll(CriteriaOptions criteriaOptions) {
 		List<T> result = (List<T>) findByCriteria(null, null, criteriaOptions);
@@ -275,13 +276,13 @@ public class GenericSpatialDao<T> implements Dao<T> {
 		getEntityManager().flush();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	@Override
 	public List<T> findByCriteria(List<Criterion> list) {
 		return (List<T>) findByCriteria(list, null, null);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	@Override
 	public List<T> findByCriteria(List<Criterion> list,
 			CriteriaOptions criteriaOptions) {
@@ -347,7 +348,7 @@ public class GenericSpatialDao<T> implements Dao<T> {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings(UNCHECKED)
 	@Override
 	public T findUniqueByCriteria(List<Criterion> list) {
 		if (LOG.isInfoEnabled()) {
