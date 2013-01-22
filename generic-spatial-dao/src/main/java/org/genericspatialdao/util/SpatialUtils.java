@@ -304,7 +304,7 @@ public final class SpatialUtils {
 
 	/**
 	 * Be careful, this method can create invalid geometries depending on the
-	 * case. In these cases, an exception will be throw
+	 * case. In these cases, an exception will be thrown
 	 * 
 	 * @param geometry
 	 * @param maxFractionDigits
