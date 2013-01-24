@@ -243,4 +243,16 @@ public class SpatialUtilsTest {
 		assertEquals(SRID, gc.getSRID());
 		assertFalse(gc.isEmpty());
 	}
+
+	@Test
+	public void checkGeometryTest() {
+		SpatialUtils
+				.checkGeometry("MULTIPOINT ((10 10), (40 30), (20 20), (30 10))");
+	}
+
+	@Test(expected = SpatialException.class)
+	public void checkGeometryWrongTest() {
+		SpatialUtils
+				.checkGeometry("MULTIPOINT ((10 a), (40 30), (20 20), (30 10))");
+	}
 }

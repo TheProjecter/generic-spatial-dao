@@ -345,6 +345,19 @@ public final class SpatialUtils {
 		return new Coordinate(x, y);
 	}
 
+	public static void checkGeometry(String wkt) {
+		Geometry geometry;
+		try {
+			geometry = (Geometry) new WKTReader(new GeometryFactory(
+					precisionModel)).read(wkt);
+		} catch (Exception e) {
+			String message = INVALID_GEOMETRY + wkt;
+			LOG.error(message);
+			throw new SpatialException(message, e);
+		}
+		checkGeometry(geometry);
+	}
+
 	public static void checkGeometry(Geometry geometry) {
 		if (geometry == null || geometry.isEmpty() || !geometry.isValid()) {
 			String message = INVALID_GEOMETRY + geometry;
