@@ -359,18 +359,18 @@ public final class SpatialUtils {
 	}
 
 	public static void checkGeometry(Geometry geometry) {
-		if (!isValid(geometry)) {
+		if (isNotValid(geometry)) {
 			String message = INVALID_GEOMETRY + geometry;
 			LOG.error(message);
 			throw new SpatialException(message);
 		}
 	}
 
-	public static boolean isValid(Geometry geometry) {
+	public static boolean isNotValid(Geometry geometry) {
 		if (geometry == null || geometry.isEmpty() || !geometry.isValid()) {
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public static PrecisionModel getPrecisionModel() {
